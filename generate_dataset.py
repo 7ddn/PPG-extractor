@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 arctic_dir = os.path.expanduser('~/l2arctic')
 sr = 16000 # downsample from 44100
-frame_length = 80 # not sure, to be determined 
+frame_length = 160 # not sure, to be determined 
 frame_time = frame_length / sr
 eps = 1e-5
 
@@ -55,7 +55,7 @@ for speaker in os.listdir(arctic_dir):
 
         
         phones.append(phone)
-        wavs.append(wav)
+        wavs.append(wav[:phone.shape[0]*frame_length])
         speakers.append(speaker)
         files.append(fl)
 
